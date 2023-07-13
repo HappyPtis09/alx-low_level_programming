@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -S --intel $CFILE
+gcc -S --intel $CFILE -o "${$CFILE.c}.o"
