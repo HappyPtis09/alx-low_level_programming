@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+11;rgb:0000/0000/0000* main - Entry point
  *
  * Description: Prints all the single digit numbers of base 10 starting from 0,
  *              followed by a new line.
@@ -14,8 +14,8 @@ int main(void)
 
 	while (i < 10)
 	{
-		putchar(num + '0');
-		num++;
+		putchar(i + '0');
+		i++;
 	}
 	putchar(\n);
 	return (0);
