@@ -11,10 +11,13 @@ int main(void)
 	char lett = 'a';
 	char LETT = 'A';
 
-	while (lett <= 'z' || LETT <= 'Z')
+	while (lett <= 'z')
 	{
 		putchar(lett);
 		lett++;
+	}
+	while (LETT <= 'Z')
+	{
 		putchar(LETT);
 		LETT++;
 	}
