@@ -1,0 +1,19 @@
+#include <stdio.h>
+/**
+ * main - Entry Point
+ *
+ * Description: program that prints the alphabet in lowercase
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+	char lett = 'a';
+
+	while (lett <= 'z' || lett != 'q', 'e')
+	{
+		putchar(lett);
+	}
+	putchar('\n');
+	return (0);
+}
