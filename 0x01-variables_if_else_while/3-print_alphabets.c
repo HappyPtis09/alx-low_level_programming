@@ -11,7 +11,7 @@ int main(void)
 	char lett = 'a';
 	char LETT = 'A';
 
-	while (lett <= 'z' || LESS <= 'Z')
+	while (lett <= 'z' || LETT <= 'Z')
 	{
 		putchar(lett);
 		lett++;
