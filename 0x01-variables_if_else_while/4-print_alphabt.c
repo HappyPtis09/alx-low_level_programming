@@ -15,8 +15,8 @@ int main(void)
 		if (lett != 'q' && lett != 'e')
 		{
 			putchar(lett);
-			lett++;
 		}
+		lett++;
 	}
 	putchar('\n');
 	return (0);
