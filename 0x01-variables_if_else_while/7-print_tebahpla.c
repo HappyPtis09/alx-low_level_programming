@@ -11,7 +11,7 @@ int main(void)
 {
 	char let = 'z';
 
-	while (let > 'a')
+	while (let >= 'a')
 	{
 		putchar(let);
 		let--;
