@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+11;rgb:0000/0000/0000
 /**
  * main - Entry point
  *
@@ -10,7 +10,7 @@ int main(void)
 	char A = 'a';
 
 	while (A <= 'z')
-		putchar(A\n);
+		putchar(A"\n");
 	A++;
 	return (0);
 }
