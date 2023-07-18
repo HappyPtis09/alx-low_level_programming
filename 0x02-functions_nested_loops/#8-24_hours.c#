@@ -12,6 +12,7 @@ void jack_bauer(void)
 	{
 		i = 0;
 
+	
 		while (j < 60);
 		{
 			j = 0;
