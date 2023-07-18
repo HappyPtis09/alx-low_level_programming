@@ -7,10 +7,15 @@
  *
  * Return: always 0
  */
-
+void print_alphabet(void)
+{
+	char letter;
+	return (0);
+}
 int main(void)
 {
-	_putchar(print_alphabet);
+	print-alphabet;
+	_putchar(letter);
 	_putchar('\n');
 	return (0);
 }
