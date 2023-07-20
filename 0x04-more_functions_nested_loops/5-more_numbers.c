@@ -10,16 +10,17 @@
 void more_numbers(void)
 {
 	int i = 1;
-	int j = 0;
 
 	while (i <= 10)
 	{
+		int j = 1;
+
 		while (j <= 14)
 		{
 			_putchar(j + '0');
 			j++;
 		}
-		i++;
 		_putchar('\n');
+		i++;
 	}
 }
