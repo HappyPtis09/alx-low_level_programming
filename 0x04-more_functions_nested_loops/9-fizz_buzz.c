@@ -35,4 +35,5 @@ int main(void)
 		printf(" ");
 		i++;
 	}
+	return (0);
 }
