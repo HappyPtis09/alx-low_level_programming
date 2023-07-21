@@ -9,14 +9,13 @@
 
 int main(void)
 {
-	long long int num = 612852475143;
-	long long int i = 2;
+	long long int num = 612852475143, i = 2;
 
 	while (i * i <= num)
 	{
 		while (num % i == 0)
 		{
-			num = num / i;
+			num /= i;
 		}
 		i++;
 	}
