@@ -1,4 +1,3 @@
-
 #include "main.h"
 
 /**
@@ -6,7 +5,7 @@
  *       the string pointed to by srcthe pointer to dest
  * @dest: char to copy to
  * @src: char to copy from
- * Return: the pointer to dest 
+ * Return: the pointer to dest
 */
 char *_strcpy(char *dest, char *src)
 {
