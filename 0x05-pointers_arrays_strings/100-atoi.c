@@ -1,19 +1,20 @@
 #include "main.h"
-
 /**
- * _atoi -  a function that convert a string to an integer.
- * @s: string to be converted
- * Return: int from srting, if none 0
+ * _atoi - converts a string to an integer
+ *
+ * @s: the string to convert
+ *
+ * Return: the integer value of the string, or 0 if there are no digits
  */
 int _atoi(char *s)
 {
-	int n = 0, i = 1;
-
+	int n = 0, sign = 1;
+	
 	while (*s != '\0')
 	{
 		if (*s == '-')
 		{
-			i *= -1;
+			sign *= -1;
 		}
 		else if (*s >= '0' && *s <= '9')
 		{
@@ -27,5 +28,5 @@ int _atoi(char *s)
 		s++;
 	}
 	
-	return n * i;
+	return n * sign;
 }
