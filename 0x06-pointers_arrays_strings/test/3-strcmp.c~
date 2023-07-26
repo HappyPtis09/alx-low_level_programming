@@ -11,7 +11,7 @@ int _strcmp(char *s1, char *s2)
 {
 	int l1;
 	int l2;
-	int i = 15;
+	int i;
 
 	while (*s1 != '\0')
 	{
@@ -33,5 +33,4 @@ int _strcmp(char *s1, char *s2)
 	{
 		return (0);
 	}
-	return (0);
 }
