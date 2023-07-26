@@ -26,5 +26,5 @@ char *_strncat(char *dest, char *src, int n)
 	if (n > 0)
 	{
 		*dest_end = '\0';
-	return dest;
+		return (dest);
 }
