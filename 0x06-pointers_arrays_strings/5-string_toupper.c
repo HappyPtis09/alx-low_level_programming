@@ -13,7 +13,7 @@ char *string_toupper(char *i)
 
 	while (*j != '\0')
 	{
-		if (*j >= 'a' && j <= 'z')
+		if (*j >= 'a' && *j <= 'z')
 		{
 			*j = *j - 'a' + 'A';
 		}
