@@ -5,7 +5,7 @@
  *
  * @argc: argument count
  * @argv: argument vector pointer to pointers
- * Return: 0 
+ * Return: 0
  */
 int main(int argc __attribute__((unused)), char *argv[])
 {
