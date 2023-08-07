@@ -3,11 +3,11 @@
 
 /**
  * *_strdup - a function that returns a pointer to a newly
- *    allocated space in memory, 
+ *    allocated space in memory,
  *       which contains a copy of the string given as a parameter.
  *
  * @str: char to be duplicated
- * Return: a pointer to a new string, NULL if str = NULL, 
+ * Return: a pointer to a new string, NULL if str = NULL,
  *     or if insufficient memory was available.
  */
 
@@ -20,7 +20,7 @@ char *_strdup(char *str)
 	if (str == NULL)
 	{
 		return (NULL);
-	}    
+	}
 	while (*str != '\0')
 	{
 		len++;
@@ -36,5 +36,6 @@ char *_strdup(char *str)
 		*(new_str + i) = *(str + i);
 	}
 	*(new_str + i) = '\0';
+	free (new_str);
 	return (new_str);
 }
