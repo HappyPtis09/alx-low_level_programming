@@ -10,14 +10,14 @@
 int count_words(char *str)
 {
 	int i, count = 0;
-	
+
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 			count++;
 	}
-	
-	return count;
+
+	return (count);
 }
 
 /**
@@ -29,19 +29,21 @@ int count_words(char *str)
 int word_length(char *str)
 {
 	int i;
-	
+
 	for (i = 0; str[i] != '\0' && str[i] != ' '; i++)
 		;
-	
-	return i;
+
+	return (i);
 }
 
 /**
  * strtow - Splits a string into words.
  * @str: The string to split.
  *
- * Return: If memory allocation fails or `str` is `NULL` or empty - return `NULL`
- *         Otherwise - return a pointer to an array of words (strings), each ending with '\0'
+ * Return: If memory allocation fails or `str` is `NULL` or empty
+ * - return NULL`
+ * otherwise - return a pointer to an array of words (strings)
+ *     , each ending with '\0'
  */
 char **strtow(char *str)
 {
@@ -76,7 +78,7 @@ char **strtow(char *str)
 		}
 
 		for (k = 0; k < n; k++)
-			s[i][k] = str[j+k];
+			s[i][k] = str[j + k];
 		s[i][k] = '\0';
 
 		j += n;
