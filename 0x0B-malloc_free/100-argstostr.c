@@ -41,11 +41,11 @@ char *argstostr(int ac, char **av)
 			str[count] = av[i][j];
 			count++;
 		}
-		str[count] = '\n';
-		count++;
+		if (str[count] == '\0')
+		{
+			str[count] = '\n';
+			count++;
+		}
 	}
-	str[count] = '\n';
-	count++;
-	str[count] = '\0';
 	return (str);
 }
