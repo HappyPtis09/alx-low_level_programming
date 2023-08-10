@@ -16,4 +16,5 @@ void *malloc_checked(unsigned int b)
 	char *alloc;
 
 	alloc = malloc(b);
+	_putchar('\n');
 }
