@@ -12,20 +12,20 @@
 
 int *array_range(int min, int max)
 {
-	int *arra, i;
+	int *arra, i, numbers;
 
 	if (min > max)
 	{
 		return (NULL);
 	}
-
-	arra = malloc(sizeof(int) * (max - min + 1));
+	numbers = max - min +1
+	arra = malloc(sizeof(int) * numbers);
 
 	if (arra == NULL)
 	{
 		return (NULL);
 	}
-	for (i = 0; i < (max - min + 1); i++)
+	for (i = 0; i < numbers; i++)
 	{
 		arr[i] = min + i;
 	}
