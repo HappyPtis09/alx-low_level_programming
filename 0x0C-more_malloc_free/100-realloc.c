@@ -1,20 +1,18 @@
 #include <stdlib.h>
 #include "main.h"
-
 /**
  * *_realloc - a function that reallocates a memory block using malloc and free
  * @ptr: pointer
  * @old_size: unsigned int
  * @new_size: unsigned int
- *
  * Return: ptr
  */
-
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
+	char *old_ptr;
+	char *new_ptr;
+	unsigned int copy_size;
 	unsigned int i;
-	char *str1;
-	char *str2;
 
 	if (new_size == old_size)
 	{
@@ -28,32 +26,22 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 	if (ptr == NULL)
 	{
-		return (malloc(new_size));
+		return malloc(new_size);
 	}
 
-	str1 = malloc(new_size);
-
-	if (str1 == NULL)
+	new_ptr = malloc(new_size);
+	if (new_ptr == NULL)
 	{
 		return (NULL);
 	}
-	str2 = str1;
 
-	if (new_size < old_size)
+	old_ptr = ptr;
+	copy_size = old_size < new_size ? old_size : new_size;
+	for (i = 0; i < copy_size; i++)
 	{
-		for (i = 0; i < new_size; i++)
-		{
-			str1[i] = str2[i];
-		}
-	}
-	if (new_size > old_size)
-	{
-		for (i = 0; i < old_size; i++)
-		{
-			str1[i] = str2[i];
-		}
+		new_ptr[i] = old_ptr[i];
 	}
 
 	free(ptr);
-	return (str1);
+	return (new_ptr);
 }
