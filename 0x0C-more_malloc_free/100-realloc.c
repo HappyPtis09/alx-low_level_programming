@@ -12,24 +12,35 @@
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
+	unsigned i;
+	void *rtp;
+	char *str1, *str2;
+
 	if (new_size == 0)
 	{
+		free(ptr);
 		return (NULL);
 	}
 
-	ptr = malloc(old_size);
-
-	if (new_size == old_size)
+	if (new_size <= old_size)
 	{
 		return (ptr);
 	}
 	if (ptr == NULL)
 	{
-		return (NULL);
+		return (malloc(new_size));
 	}
-	if (new_size > old_size)
+	rtp = malloc(new_size);
+	str1 = (char *)ptr;
+	str2 = (char *)rtp;
+
+	if (rtp)
 	{
-		ptr = malloc(new_size);
+		for (i = 0; i < old_size; i++)
+		{
+			str1[i] = str2[i];
+		}
+		free(ptr);
 	}
-	return (ptr);
+	return (rtp);
 }
