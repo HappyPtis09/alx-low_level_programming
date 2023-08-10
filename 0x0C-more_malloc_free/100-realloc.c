@@ -3,7 +3,7 @@
 
 /**
  * *_realloc - a function that reallocates a memory block using malloc and free
- * @ptr
+ * @ptr: pointer
  * @old_size: unsigned int
  * @new_size: unsigned int
  *
@@ -12,7 +12,7 @@
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned i;
+	unsigned int i;
 	void *rtp;
 	char *str1, *str2;
 
