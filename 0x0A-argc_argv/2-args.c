@@ -2,19 +2,19 @@
 #include "main.h"
 
 /**
- * main - prints all arguments it receives
+ * main - print all arguments it receives
  * @argc: number of arguments
  * @argv: array of arguments
  *
- * Return: Always 0 (Success)
+ * Return: 0
  */
 int main(int argc, char *argv[])
 {
-	int i;
+	int a;
 
-	for (i = 0; i < argc; i++)
+	for (a = 0; a < argc; a++)
 	{
-		printf("%s\n", argv[i]);
+		printf("%s\n", argv[a]);
 	}
 
 	return (0);

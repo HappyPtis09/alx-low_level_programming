@@ -3,68 +3,62 @@
 #include <ctype.h>
 #include <string.h>
 /**
- * check_num - check - string there are digit
+ * check_num - string if there are digit
  * @str: array str
  *
- * Return: Always 0 (Success)
+ * Return: 0
  */
 int check_num(char *str)
 {
-	/*Declaring variables*/
-	unsigned int count;
+	unsigned int c;
 
-	count = 0;
-	while (count < strlen(str)) /*count string*/
+	c = 0;
+	while (c < strlen(str))
 
 	{
-		if (!isdigit(str[count])) /*check if str there are digit*/
+		if (!isdigit(str[c]))
 		{
 			return (0);
 		}
 
-		count++;
+		c++;
 	}
 	return (1);
 }
 
 /**
- * main - Print the name of the program
- * @argc: Count arguments
+ * main - print the name of the program
+ * @argc: num arguments
  * @argv: Arguments
  *
- * Return: Always 0 (Success)
+ * Return: int
  */
 
 int main(int argc, char *argv[])
-
 {
-
-	/*Declaring variables*/
-	int count;
-	int str_to_int;
+	int c;
+	int sti;
 	int sum = 0;
 
-	count = 1;
-	while (count < argc) /*Goes through the whole array*/
+	c = 1;
+	while (c < argc)
 	{
-		if (check_num(argv[count]))
+		if (check_num(argv[c]))
 
 		{
-			str_to_int = atoi(argv[count]); /*ATOI --> convert string to int*/
-			sum += str_to_int;
+			sti = atoi(argv[c]);
+			sum += sti;
 		}
-
-		/*Condition if one of the number contains symbols that are not digits*/
 		else
 		{
 			printf("Error\n");
 			return (1);
 		}
 
-		count++;
+		c++;
 	}
 
-	printf("%d\n", sum); /*print sum*/
+	printf("%d\n", sum);
 
 	return (0);
 }
