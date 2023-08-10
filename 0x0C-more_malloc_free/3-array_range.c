@@ -18,7 +18,7 @@ int *array_range(int min, int max)
 	{
 		return (NULL);
 	}
-	numbers = max - min +1
+	numbers = max - min + 1;
 	arra = malloc(sizeof(int) * numbers);
 
 	if (arra == NULL)
@@ -27,7 +27,7 @@ int *array_range(int min, int max)
 	}
 	for (i = 0; i < numbers; i++)
 	{
-		arr[i] = min + i;
+		arra[i] = min + i;
 	}
 	return (arra);
 }
