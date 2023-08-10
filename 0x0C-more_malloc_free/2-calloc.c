@@ -14,4 +14,18 @@
 
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	
+	void *alloc;
+
+	if (nmemb == 0 || size == 0)
+	{
+		return (NULL);
+	}
+
+	alloc = malloc(size * nmemb);
+
+	if (alloc == NULL)
+	{
+		return (NULL);
+	}
+	return (alloc);
+}
