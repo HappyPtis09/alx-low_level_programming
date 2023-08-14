@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "dog.h"
+
 /**
  * *_strcpy - copies a stringand the null byte (\0)
  * @dest: pointer to the string
