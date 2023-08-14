@@ -1,9 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#define struct dog
+typedef struct dog
 {
-	char *name;
-	char *owner;
-	float *age;
-};
+char *name;
+char *owner;
+float age;
+} dog_ali;
