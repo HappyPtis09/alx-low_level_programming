@@ -12,6 +12,7 @@ int _strlen(char *s)
 	int i;
 
 	for (i = 0; s[i] != '\0'; i++)
+		;
 	return (i);
 }
 
@@ -54,7 +55,7 @@ char *_strcpy(char *dest, char *src)
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *cdog;
-	int l1, l2, i;
+	int l1, l2;
 
 	l1 = _strlen(name);
 	l2 = _strlen(owner);
