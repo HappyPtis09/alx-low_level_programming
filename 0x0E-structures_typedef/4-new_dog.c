@@ -53,8 +53,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return(NULL);
 	}
 
-	cdog->name = malloc(sizeof(char) + (l1 + 1));
-	cdog->owner = malloc(sizeof(char) + (l2 + 1));
+	cdog->name = malloc(sizeof(char) * (l1 + 1));
+	cdog->owner = malloc(sizeof(char) * (l2 + 1));
 
 	if (cdog->name == NULL || cdog->owner == NULL)
 	{
