@@ -2,21 +2,6 @@
 #include "dog.h"
 
 /**
- * _strlen - returns the length of a string
- * @s: string to evaluate
- *
- * Return: the length of the string
- */
-int _strlen(char *s)
-{
-	int i;
-
-	for (i = 0; s[i] != '\0'; i++)
-		;
-	return (i);
-}
-
-/**
  * *_strcpy - copies a stringand the null byte (\0)
  * @dest: pointer to the string
  * @src: string to be copied
@@ -49,7 +34,7 @@ char *_strcpy(char *dest, char *src)
  * @age: Dog's age
  * @owner: Dog's owner
  *
- * Description: a structure that define the attributes of a dog
+ * Return: Pointer new_dog
  */
 
 dog_t *new_dog(char *name, float age, char *owner)
@@ -57,14 +42,16 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *cdog;
 	int l1, l2;
 
-	l1 = _strlen(name);
-	l2 = _strlen(owner);
+	for (l1 = 0; name[l1] != '\0'; l1++)
+		;
+	for (l2 = 0; owner[l2] != '\0'; l2++)
+		;
 
 	cdog = malloc(sizeof(dog_t));
 
 	if (cdog == NULL)
 	{
-		return(NULL);
+		return (NULL);
 	}
 
 	cdog->name = malloc(sizeof(char) * (l1 + 1));
@@ -82,5 +69,5 @@ dog_t *new_dog(char *name, float age, char *owner)
 	_strcpy(cdog->owner, owner);
 	cdog->age = age;
 
-	return(cdog);
+	return (cdog);
 }
