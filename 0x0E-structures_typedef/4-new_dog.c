@@ -2,6 +2,20 @@
 #include "dog.h"
 
 /**
+ * _strlen - returns the length of a string
+ * @s: string to evaluate
+ *
+ * Return: the length of the string
+ */
+int _strlen(char *s)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+	return (i);
+}
+
+/**
  * *_strcpy - copies a stringand the null byte (\0)
  * @dest: pointer to the string
  * @src: string to be copied
@@ -42,13 +56,12 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *cdog;
 	int l1, l2, i;
 
-	for (i = 0; name[i] = '\0'; l1++)
-		;
-	for (i = 0; owner[i] = '\0'; l2++)
-		;
+	l1 = _strlen(name);
+	l2 = _strlen(owner);
+
 	cdog = malloc(sizeof(dog_t));
 
-	if (cdoge == NULL)
+	if (cdog == NULL)
 	{
 		return(NULL);
 	}
@@ -63,6 +76,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(cdog);
 		return (NULL);
 	}
+
 	_strcpy(cdog->name, name);
 	_strcpy(cdog->owner, owner);
 	cdog->age = age;
