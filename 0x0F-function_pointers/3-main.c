@@ -12,33 +12,32 @@
  */
 int main(int argc, char *argv[])
 {
-    int num1, num2, result;
-    int (*op_func)(int, int);
+	int n1, n2;
+	int (*oper)(int, int);
 
-    if (argc != 4)
-    {
-        printf("Error\n");
-        return (90);
-    }
+	if (argc != 4)
+	{
+		printf("Error\n");
+		exit(90);
+	}
 
-    num1 = atoi(argv[1]);
-    num2 = atoi(argv[3]);
-    op_func = get_op_func(argv[2]);
+	if (argv[2][1])
+	{
+		printf("Error\n");
+		exit(99);
+	}
 
-    if (op_func == NULL)
-    {
-        printf("Error\n");
-        return (99);
-    }
+	oper = get_op_func(argv[2]);
 
-    if ((*argv[2] == '/' || *argv[2] == '%') && num2 == 0)
-    {
-        printf("Error\n");
-        return (100);
-    }
+	if (operation == NULL)
+	{
+		printf("Error\n");
+		exit(100);
+	}
 
-    result = op_func(num1, num2);
-    printf("%d\n", result);
+	n1 = atoi(argv[1]);
+	n2 = atoi(argv[3]);
 
-    return (0);
+	printf("%d\n", oper(n1, n2));
+	return (0);
 }
