@@ -2,9 +2,9 @@
 
 /**
  * int_index - a function that searches for an integer
- * @array:
- * @size:
- * @cmp:
+ * @array: int array
+ * @size: int for size of array
+ * @cmp: function pointer
  *
  * Return: returns the index of the first element for which
  *              the cmp function does not return 0
