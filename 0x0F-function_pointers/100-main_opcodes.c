@@ -12,33 +12,33 @@
  */
 int main(int argc, char *argv[])
 {
-	int bt, a;
+	int bytes, i;
 	char *arr;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
-		exit(90);
+		exit(1);
 	}
 
-	bt = atoi(argv[1]);
+	bytes = atoi(argv[1]);
 
-	if (bt < 0)
+	if (bytes < 0)
 	{
 		printf("Error\n");
-		exit(100);
+		exit(2);
 	}
 
 	arr = (char *)main;
 
-	for (a = 0; a < bt; a++)
+	for (i = 0; i < bytes; i++)
 	{
-		if (a == bt - 1)
+		if (i == bytes - 1)
 		{
-			printf("%02hhx\n", arr[a]);
+			printf("%02hhx\n", arr[i]);
 			break;
 		}
-		printf("%02hhx ", arr[a]);
+		printf("%02hhx ", arr[i]);
 	}
 	return (0);
 }
