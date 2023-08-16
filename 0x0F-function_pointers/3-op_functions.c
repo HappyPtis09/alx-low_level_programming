@@ -26,7 +26,7 @@ int op_add(int a, int b)
  * Return: the difference of a and b
  */
 
-int op_add(int a, int b)
+int op_sub(int a, int b)
 {
         int c;
 
@@ -47,7 +47,7 @@ int op_mul(int a, int b)
 {
 	int c;
 
-	c = a * c;
+	c = a * b;
 
 	return(c);
 }
