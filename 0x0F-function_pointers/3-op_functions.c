@@ -28,11 +28,11 @@ int op_add(int a, int b)
 
 int op_sub(int a, int b)
 {
-        int c;
+	int c;
 
-        c = a - b;
+	c = a - b;
 
-        return (c);
+	return (c);
 }
 
 /**
@@ -49,7 +49,7 @@ int op_mul(int a, int b)
 
 	c = a * b;
 
-	return(c);
+	return (c);
 }
 
 /**
@@ -83,5 +83,5 @@ int op_mod(int a, int b)
 
 	c = a % b;
 
-	return(c);
+	return (c);
 }
