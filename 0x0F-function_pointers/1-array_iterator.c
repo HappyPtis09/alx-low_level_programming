@@ -5,15 +5,19 @@
  * @array: int
  * @size: fct
  * @action: function pointer
- * 
+ *
  * Return: Nothing
 */
 
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
-    if (size && action)
+    int i;
+
+    for (i = 0; i < size; i++)
     {
-        array[size];
-        action(size);
+        if (array && action)
+        {
+            action(array[size]);
+        }
     }
 }
