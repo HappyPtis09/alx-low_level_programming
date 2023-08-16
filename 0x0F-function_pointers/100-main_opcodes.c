@@ -1,32 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_opcodes(int num_bytes)
-{
-	void (*main_ptr)() = &main;
-
-	for (int i = 0; i < num_bytes; i++)
-	{
-		printf("%02hhx ", *((char*)main_ptr + i));
-	}
-	printf("\n");
-}
-
+/**
+ * main -  a program that prints the opcodes of its own main function
+ *
+ * @argc: arguments's number
+ *
+ * @argv: arguments's array
+ *
+ * Return: 0
+ */
 int main(int argc, char *argv[])
 {
+	int bt, a;
+	char *arr;
+
 	if (argc != 2)
 	{
 		printf("Error\n");
-		return (90);
+		exit(90);
 	}
-	int num_bytes = atoi(argv[1]);
 
-	if (num_bytes < 0)
+	bt = atoi(argv[1]);
+
+	if (bt < 0)
 	{
 		printf("Error\n");
-		return (100);
+		exit(100);
 	}
-	print_opcodes(num_bytes);
 
-	return 0;
+	arr = (char *)main;
+
+	for (a = 0; a < bt; a++)
+	{
+		if (a == bt - 1)
+		{
+			printf("%02hhx\n", arr[a]);
+			break;
+		}
+		printf("%02hhx ", arr[a]);
+	}
+	return (0);
 }
