@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		return (99);
 	}
 
-	if ((*argv[2] == '/' || *argv[2] == '%')
+	if (*argv[2] == '/' || *argv[2] == '%')
 	{
 		printf("Error\n");
 		return (100);
