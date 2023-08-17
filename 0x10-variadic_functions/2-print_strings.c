@@ -18,10 +18,10 @@ void print_strings(const char *separator, const unsigned int n, ...)
 
 	va_start(strings, n);
 
-	char *str = va_arg(strings, char*);
-
 	for (s = 0; s < n; s++)
 	{
+		char *str = va_arg(strings, char*);
+
 		if (str == NULL)
 		{
 			printf("(nil)");
