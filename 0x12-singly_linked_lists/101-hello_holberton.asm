@@ -1,14 +1,17 @@
-    extern printf
+extern printf
+section .data
+	line: db "Hello, Holberton", 0
+	format: db "%s", 10, 0
 
-    global main
-    main:
-        sub rsp, 8
-        mov rdi, format
-        xor eax, eax
-        call printf
-        add rsp, 8
+section .text
+	global main
+main:
+	push rbp
+	mov rdi,format
+	mov rsi,line
+	mov rax,0
+	call printf
 
-        mov eax, 60
-        xor edi, edi
-        syscall
-    format db "Hello, Holberton\n", 0
+	pop rbp
+	mov rax,0
+	ret
