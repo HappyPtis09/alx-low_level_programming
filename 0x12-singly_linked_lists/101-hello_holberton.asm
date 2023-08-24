@@ -1,7 +1,3 @@
-section .data
-    format db "Hello, Holberton", 0
-
-section .text
     extern printf
 
     global main
@@ -15,3 +11,4 @@ section .text
         mov eax, 60
         xor edi, edi
         syscall
+    format db "Hello, Holberton\n", 0
