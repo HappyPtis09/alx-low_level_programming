@@ -8,15 +8,17 @@
  *
  * Return:  the sum of all the data (n);if the list is empty, return 0
  */
+
 int sum_listint(listint_t *head)
 {
 	int summ;
-	listint_t *tempp = head;
+	listint_t *current = head;
 
-	while (tempp)
+	summ = 0;
+	while (current)
 	{
-		summ += tempp->n;
-		tempp = tempp->next;
+	summ += current->n;
+	current = current->next;
 	}
 	return (summ);
 }
