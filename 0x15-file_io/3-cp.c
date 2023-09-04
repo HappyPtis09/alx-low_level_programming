@@ -15,7 +15,7 @@ char *alloc_buffer(char *file)
 
 	if (buffer == NULL)
 	{
-		dprintf(STDERR_FILENO,"Error: Can't write to %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
 		exit(99);
 	}
 
@@ -53,7 +53,6 @@ void close_file(int file)
  *         If file_from does not exist or cannot be read; exit code 98.
  *         If file_to cannot be created or written to; exit code 99.
  *         If file_to or file_from cannot be closed; exit code 100.
-
  */
 
 int main(int argc, char *argv[])
@@ -94,10 +93,8 @@ int main(int argc, char *argv[])
 		file_to = open(argv[2], O_WRONLY | O_APPEND);
 
 	} while (r > 0);
-
 	free(buffer);
 	close_file(file_from);
 	close_file(file_to);
-
 	return (0);
 }
