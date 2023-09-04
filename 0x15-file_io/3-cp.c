@@ -1,58 +1,34 @@
 #include "main.h"
 
 /**
- * open_file - Opens a file with the specified filename, flags, and mode.
+ * open_file - Opens a file and handles errors
  *
- * @filename: filename The name of the file to open.
- * @flags: The flags to be used for opening the file.
- * @mode: The file mode for creating the file, if it doesn't exist.
+ * @filename: Name of the file to open
+ * @flags: Flags to use when opening the file
  *
- * Return: The file descriptor of the opened file.
+ * Return: File descriptor of the opened file
  */
-
-int open_file(const char *filename, int flags, mode_t mode)
+int open_file(const char *filename, int flags)
 {
-	int file_descriptor = open(filename, flags, mode);
+	int fd = open(filename, flags);
 
-	if (file_descriptor == -1)
+	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		exit(98);
 	}
-	return (file_descriptor);
+
+	return (fd);
 }
 
 /**
- * close_file - Closes the file associated with the given file descriptor.
+ * copy_file - Copies the content of one file to another
  *
- * @file_descriptor: The file descriptor of the file to close
- *
- * Return : Nothing
+ * @file_from: File descriptor of the source file
+ * @file_to: File descriptor of the destination file
  */
-
-void close_file(int file_descriptor)
+void copy_file(int file_from, int file_to)
 {
-	if (close(file_descriptor) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_descriptor);
-		exit(100);
-	}
-}
-
-/**
- * copy_file - Copies the contents of the source file to the destination file.
- *
- * @source_file: The path to the source file.
- * @destination_file: The path to the destination file.
- *
- * Return: Nothing
- */
-
-void copy_file(const char *source_file, const char *destination_file)
-{
-	int file_from = open_file(source_file, O_RDONLY, 0);
-	int file_to = open_file(destination_file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-
 	char buffer[BUFFER_SIZE];
 	ssize_t r, w;
 
@@ -61,33 +37,57 @@ void copy_file(const char *source_file, const char *destination_file)
 		w = write(file_to, buffer, r);
 		if (w == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", destination_file);
+			dprintf(STDERR_FILENO, "Error: Can't write to file\n");
 			exit(99);
 		}
 	}
 
-	close_file(file_from);
-	close_file(file_to);
+	if (r == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file\n");
+		exit(98);
+	}
 }
 
 /**
- * main - a program that copies the content of a file to another file
+ * close_file - Closes a file descriptor and handles errors
  *
- * @argc: num of arguments
- * @argv: array
- *
- * Return: 0
-*/
+ * @fd: File descriptor to close
+ */
+void close_file(int fd)
+{
+	if (close(fd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close file descriptor\n");
+		exit(100);
+	}
+}
 
+/**
+ * main - A program that copies the content of a file to another file
+ *
+ * @argc: Number of arguments
+ * @argv: Array of arguments
+ *
+ * Return: 0 on success
+ */
 int main(int argc, char *argv[])
 {
+	int file_from, file_to;
+
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
 		exit(97);
 	}
 
-	copy_file(argv[1], argv[2]);
+	file_from = open_file(argv[1], O_RDONLY);
+	file_to = open_file(argv[2], O_WRONLY | O_CREAT | O_TRUNC);
+
+	copy_file(file_from, file_to);
+
+	close_file(file_from);
+	close_file(file_to);
 
 	return (0);
 }
