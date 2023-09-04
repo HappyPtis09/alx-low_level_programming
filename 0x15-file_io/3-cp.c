@@ -1,64 +1,43 @@
 #include "main.h"
 
 /**
- * open_file - Opens a file and handles errors
+ * alloc_buffer - 1024 bytes for a buffer.
+ * @file: name of file
  *
- * @filename: Name of the file to open
- * @flags: Flags to use when opening the file
- *
- * Return: File descriptor of the opened file
+ * Return: pointer
  */
-int open_file(const char *filename, int flags)
-{
-	int fd = open(filename, flags);
 
-	if (fd == -1)
+char *alloc_buffer(char *file)
+{
+	char *buffer;
+
+	buffer = malloc(sizeof(char) * 1024);
+
+	if (buffer == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
-		exit(98);
+		dprintf(STDERR_FILENO,"Error: Can't write to %s\n", file);
+		exit(99);
 	}
 
-	return (fd);
+	return (buffer);
 }
 
 /**
- * copy_file - Copies the content of one file to another
+ * close_file - Closes file
  *
- * @file_from: File descriptor of the source file
- * @file_to: File descriptor of the destination file
- */
-void copy_file(int file_from, int file_to)
-{
-	char buffer[BUFFER_SIZE];
-	ssize_t r, w;
-
-	while ((r = read(file_from, buffer, BUFFER_SIZE)) > 0)
-	{
-		w = write(file_to, buffer, r);
-		if (w == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file\n");
-			exit(99);
-		}
-	}
-
-	if (r == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file\n");
-		exit(98);
-	}
-}
-
-/**
- * close_file - Closes a file descriptor and handles errors
+ * @file: The file to be closed
  *
- * @fd: File descriptor to close
+ * Return: Nothing
  */
-void close_file(int fd)
+void close_file(int file)
 {
-	if (close(fd) == -1)
+	int i;
+
+	i = close(file);
+
+	if (i == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close file descriptor\n");
+		dprintf(STDERR_FILENO, "Error: Can't close file %d\n", file);
 		exit(100);
 	}
 }
@@ -69,23 +48,54 @@ void close_file(int fd)
  * @argc: Number of arguments
  * @argv: Array of arguments
  *
- * Return: 0 on success
+ * Return: 0
+ *         If argument count is incorrect; exit code 97.
+ *         If file_from does not exist or cannot be read; exit code 98.
+ *         If file_to cannot be created or written to; exit code 99.
+ *         If file_to or file_from cannot be closed; exit code 100.
+
  */
+
 int main(int argc, char *argv[])
 {
-	int file_from, file_to;
+	int file_from, file_to, r, w;
+	char *buffer;
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 
-	file_from = open_file(argv[1], O_RDONLY);
-	file_to = open_file(argv[2], O_WRONLY | O_CREAT | O_TRUNC);
+	buffer = alloc_buffer(argv[2]);
+	file_from = open(argv[1], O_RDONLY);
+	r = read(file_from, buffer, 1024);
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
-	copy_file(file_from, file_to);
+	do {
+		if (file_from == -1 || r == -1)
+		{
+			dprintf(STDERR_FILENO,
+				"Error: Can't read file_from file %s\n", argv[1]);
+			free(buffer);
+			exit(98);
+		}
 
+		w = write(file_to, buffer, r);
+		if (file_to == -1 || w == -1)
+		{
+			dprintf(STDERR_FILENO,
+				"Error: Can't write to %s\n", argv[2]);
+			free(buffer);
+			exit(99);
+		}
+
+		r = read(file_from, buffer, 1024);
+		file_to = open(argv[2], O_WRONLY | O_APPEND);
+
+	} while (r > 0);
+
+	free(buffer);
 	close_file(file_from);
 	close_file(file_to);
 
