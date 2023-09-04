@@ -29,6 +29,7 @@ char *alloc_buffer(char *file)
  *
  * Return: Nothing
  */
+
 void close_file(int file)
 {
 	int i;
