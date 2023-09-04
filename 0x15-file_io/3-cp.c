@@ -47,8 +47,8 @@ void close_file(int file)
 /**
  * main - Copies the contents of a file to another file.
  *
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
+ * @argc: num of arguments
+ * @argv: an array
  *
  * Return: 0 on success.
  *         If the argument count is incorrect; exit code 97.
