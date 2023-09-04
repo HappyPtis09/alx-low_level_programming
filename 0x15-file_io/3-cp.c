@@ -10,13 +10,19 @@
 
 int main(int argc, char *argv[])
 {
+	int file_from;
+	int file_to;
+	char buffer[BUFFER_SIZE];
+	ssize_t r;
+	ssize_t w;
+
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
 		exit(97);
 	}
 
-	int file_from = open(argv[1], O_RDONLY);
+	file_from = open(argv[1], O_RDONLY);
 
 	if (file_from == -1)
 	{
@@ -24,19 +30,13 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	int file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-
-	char buffer[BUFFER_SIZE];
-
-	ssize_t r;
-	ssize_t w;
-
 
 	while ((r = read(file_from, buffer, BUFFER_SIZE)) > 0)
 	{
